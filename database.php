@@ -1,2 +1,5 @@
 <?php
-    // Database file
+    // Create database class
+    class Database{
+
+    }
