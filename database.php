@@ -6,8 +6,22 @@
         private $pass = '';
         private $dbname = 'livechat';
 
-        function __construct()
+        private $db_conn = false;
+        private $db = '';
+
+        public function __construct()
         {
-            
+            if(!$this->db_conn){
+                $this->db = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
+                if($this->db->connect_error){
+                    echo 'database not connect';
+                }else{
+                    echo 'database connected';
+                }
+            }else{
+                echo 'condition false';
+            }
         }
     }
+
+    $db = new Database();
