@@ -16,7 +16,7 @@
                 if($this->db->connect_error){
                     echo 'database not connect';
                 }else{
-                    echo 'database connected';
+                    $this->db_conn = true;
                 }
             }else{
                 echo 'condition false';
