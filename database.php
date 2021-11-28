@@ -5,4 +5,9 @@
         private $user = 'root';
         private $pass = '';
         private $dbname = 'livechat';
+
+        function __construct()
+        {
+            
+        }
     }
