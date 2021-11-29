@@ -1,10 +1,9 @@
 <?php
     // Create database class
     class Database{
-        private $host = 'localhost';
         private $user = 'root';
         private $pass = '';
-        private $dbname = 'livechat';
+        private $dsn = "mysql:host=localhost;dbname=livechat;charset=UTF8";
 
         private $db_conn = false;
         private $db = '';
@@ -12,11 +11,13 @@
         public function __construct()
         {
             if(!$this->db_conn){
-                $this->db = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
-                if($this->db->connect_error){
-                    echo 'database not connect';
-                }else{
-                    $this->db_conn = true;
+                try {
+                    $this->db = new PDO($this->dsn, $this->user, $this->pass);
+                    if($this->db){
+                        echo "Connected to the database successfully!";
+                    }
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
                 }
             }else{
                 echo 'condition false';
